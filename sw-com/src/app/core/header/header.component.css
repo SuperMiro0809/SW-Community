@@ -1,0 +1,114 @@
+.title {
+  color: lightgray !important;
+  font-weight: bold !important;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.title:hover {
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.n {
+    overflow: hidden;
+    background-color: black !important;
+  }
+
+  .topnav {
+      float: right;
+  }
+  
+  .topnav a {
+    float: left;
+    color: gray !important;
+    font-weight: 500 !important;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-right: 1px solid #333;
+  }
+
+  .topnav a:last-child {
+    border-right: none;
+  }
+  
+  .topnav a:hover {
+    color: white !important;
+    font-weight: 500 !important;
+    text-decoration: none;
+  }
+
+
+   #n a.icon {
+    display: none;
+    float: right;
+    color: gray !important;
+    font-weight: 500 !important;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  #n a.icon:hover {
+    color: white !important;
+    font-weight: 500 !important;
+    text-decoration: none;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  div.responsive {
+    position: relative;
+    float: right;
+    display: none;
+    margin: 10px;
+    z-index: 9000;
+    background-color: black;
+    padding: 20px;
+  }
+
+  div.responsive a {
+    color: #ffbf00 !important;
+    font-weight: 500 !important;
+  }
+
+  div.responsive a:hover {
+    color: white !important;
+    font-weight: 500 !important;
+    text-decoration: none;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  @media screen and (max-width: 700px) {
+    .topnav a {display: none;}
+    #n a.icon {
+      float: right;
+      display: block !important;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    div.responsive {
+      position: relative;
+      display: block;
+    }
+    #n a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+   div.responsive a {
+      float: none;
+      display: block;
+    }
+  }

@@ -1,0 +1,18 @@
+<div class="n" id="n">
+    <a class="navbar-brand title" href="/home">SW COM</a>
+    <div class="topnav" #topnav>
+        <a href="/users/profile">Welcome, username</a>
+        <a href="/users/logout">Logout</a>
+        <a href="/users/login">Login</a>
+        <a href="/users/register">Register</a>
+    </div>
+        <a class="icon" (click)="openMenu(res)">
+            <i class="fa fa-bars"></i>
+        </a>
+</div>
+<div class="hide" #res>
+    <a href="/users/profile">Welcome, username</a>
+    <a href="/users/logout">Logout</a>
+    <a href="/users/login">Login</a>
+    <a href="/users/register">Register</a>
+</div>

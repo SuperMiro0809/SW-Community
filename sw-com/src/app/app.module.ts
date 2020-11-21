@@ -8,7 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './core/header/header.component'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { from } from 'rxjs';
+import { UserModule } from './user/user.module';
+import { UserRoutingModule } from './user/user-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { from } from 'rxjs';
     BrowserModule,
     CoreModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UserRoutingModule
   ],
   providers: [],
   bootstrap: [

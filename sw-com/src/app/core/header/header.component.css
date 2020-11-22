@@ -1,20 +1,20 @@
-.title {
-  color: lightgray !important;
-  font-weight: bold !important;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
+  .title {
+    color: lightgray !important;
+    font-weight: bold !important;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+  }
 
-.title:hover {
-  color: white !important;
-  font-weight: bold !important;
-  font-size: 20px;
-  text-decoration: none;
-}
+  .title:hover {
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 20px;
+    text-decoration: none;
+  }
 
-.n {
+  .n {
     overflow: hidden;
     background-color: black !important;
   }
@@ -26,11 +26,11 @@
   .topnav a {
     float: left;
     color: gray !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     text-align: center;
-    padding: 14px 16px;
+    padding: 23px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
     border-right: 1px solid #333;
   }
 
@@ -40,7 +40,7 @@
   
   .topnav a:hover {
     color: white !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     text-decoration: none;
   }
 
@@ -52,7 +52,7 @@
     font-weight: 500 !important;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
   }
 
   #n a.icon:hover {
@@ -61,7 +61,7 @@
     text-decoration: none;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
   }
 
   div.responsive {
@@ -72,11 +72,14 @@
     z-index: 9000;
     background-color: black;
     padding: 20px;
+    border: 3px solid #333;
   }
 
   div.responsive a {
     color: #ffbf00 !important;
     font-weight: 500 !important;
+    border-bottom: 1px solid #333;
+    font-size: 18px;
   }
 
   div.responsive a:hover {
@@ -87,6 +90,13 @@
 
   .hide {
     display: none;
+  }
+
+  .site-icon {
+    padding: 14px 14px;
+    font-size: 35px;
+    text-align: center;
+    color: white;
   }
 
   @media screen and (max-width: 700px) {

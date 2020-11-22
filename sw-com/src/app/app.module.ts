@@ -9,7 +9,7 @@ import { HeaderComponent } from './core/header/header.component'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
-import { UserRoutingModule } from './user/user-routing.module';
+import { FooterComponent } from './core/footer/footer.component';
 
 
 @NgModule({
@@ -22,12 +22,13 @@ import { UserRoutingModule } from './user/user-routing.module';
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    UserRoutingModule
+    UserModule
   ],
   providers: [],
   bootstrap: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class AppModule { }

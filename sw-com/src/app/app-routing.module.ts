@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
     data: {
       title: 'HOME'
     }
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

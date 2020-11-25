@@ -18,11 +18,30 @@
     z-index: 9000;
 }
 
-.profile-info {
-    color: white;
+.profile-group {
+    text-align: center;
 }
 
-.flex {
+.profile-info {
+    color: white;
+    border-bottom: gray 1px solid;
+    width: 100%;
+    display: inline-block;
+}
+
+.profile-value {
+    color: #ffbf00;
+    font-size: 16px;
+    font-weight: 500;
+} 
+
+.icon {
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+}
+
+/* .flex {
     display: flex;
 }
 
@@ -44,4 +63,4 @@
 .profile-value {
     color: #ffbf00;
     font-size: 18px;
-}
+} */

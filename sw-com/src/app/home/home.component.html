@@ -1,7 +1,68 @@
-<div class="main-content">
+<div class="main-content" *ngIf="!loggedIn">
     <h1 class="main">
         fulfill <br> your destiny.
     </h1>
     <h3 class="main-text">Have you always wanted be a jedi or a sith? Join the light or the dark side now!</h3>
     <a routerLink="/users/login" class="join-button">Join Now</a>
+</div>
+
+<div class="main-content" *ngIf="loggedIn">
+    <h1 class="main">
+        Welcome, <span class="username">Username</span>
+    </h1>
+    <div class="news card">
+        <div class="card-body">
+            <h4 class="news-title">Last News</h4>
+        </div>
+        <div class="card-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3 d-flex new">
+                        <div class="card bg-gradient-primary new-content">
+                            <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
+                                    <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
+                            </div>
+                            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                                <div class="title-div">Title: <a href="#" class="new-title">I am your father</a></div>
+                                <div class="by">By: <span>Username</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 d-flex new">
+                        <div class="card bg-gradient-primary new-content">
+                            <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
+                                    <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
+                            </div>
+                            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                                <div class="title-div">Title: <a href="#" class="new-title">I am your father</a></div>
+                                <div class="by">By: <span>Username</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 d-flex new">
+                        <div class="card bg-gradient-primary new-content">
+                            <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
+                                    <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
+                            </div>
+                            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                                <div class="title-div">Title: <a href="#" class="new-title">I am your father</a></div>
+                                <div class="by">By: <span>Username</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 d-flex new">
+                        <div class="card bg-gradient-primary new-content">
+                            <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
+                                    <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
+                            </div>
+                            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                                <div class="title-div">Title: <a href="#" class="new-title">I am your father</a></div>
+                                <div class="by">By: <span>Username</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

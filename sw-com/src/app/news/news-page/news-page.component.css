@@ -1,0 +1,29 @@
+    .main-content {
+        margin-top: 15%;
+        margin-bottom: 3%;
+    }
+ 
+    .main-text {
+        color: #ffbf00;
+    }
+ 
+   .news {
+     background-color: #181818;
+   }
+
+   .news-title {
+     color: #ffbf00;
+     text-transform: uppercase;
+     font-size: 25px;
+     z-index: 9000;
+     left: 0;
+     padding-left: 15px;
+   }
+ 
+   .card-body {
+     border-bottom: gray solid 1px;
+   }
+
+   .row {
+     margin: auto;
+   }

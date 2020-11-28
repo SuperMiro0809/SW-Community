@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { FooterComponent } from './core/footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NewsModule } from './news/news.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    UserModule
+    UserModule,
+    NewsModule
   ],
   providers: [],
   bootstrap: [

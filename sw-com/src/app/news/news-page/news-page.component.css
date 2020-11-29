@@ -27,3 +27,30 @@
    .row {
      margin: auto;
    }
+
+   .create-button {
+    background-color:#ffbf00;
+    border-radius:6px;
+    border:1px solid #ffbf00;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-family:Verdana;
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 15px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #8c8235;
+    }
+  
+    .create-button:hover {
+        background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+        background-color:#ffab23;
+        color:#333333;
+        text-decoration: none;
+    }
+  
+    .create-button:active {
+        position:relative;
+        top:1px;
+    }

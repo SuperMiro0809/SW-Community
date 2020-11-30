@@ -12,6 +12,7 @@ import { UserModule } from './user/user.module';
 import { FooterComponent } from './core/footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewsModule } from './news/news.module';
+import { ShopModule } from './shop/shop.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NewsModule } from './news/news.module';
     SharedModule,
     AppRoutingModule,
     UserModule,
-    NewsModule
+    NewsModule,
+    ShopModule
   ],
   providers: [],
   bootstrap: [

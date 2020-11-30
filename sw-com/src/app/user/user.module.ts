@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserService } from './user.service';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -13,7 +14,7 @@ import { UserService } from './user.service';
   declarations: [
     LoginComponent, 
     RegisterComponent, 
-    ProfileComponent
+    ProfileComponent, CartComponent
   ],
   imports: [
     CommonModule,

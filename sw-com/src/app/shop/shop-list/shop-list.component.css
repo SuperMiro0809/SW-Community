@@ -2,33 +2,33 @@
         margin-top: 15%;
         margin-bottom: 3%;
     }
- 
+
     .main-text {
         color: #ffbf00;
     }
- 
-   .news {
-        background-color: #181818;
-   }
 
-   .news-title {
+    .shop {
+        background-color: #181818;
+    }
+
+    .shop-title {
         color: #ffbf00;
         text-transform: uppercase;
         font-size: 25px;
         z-index: 9000;
         left: 0;
         padding-left: 15px;
-   }
- 
-   .card-body {
+    }
+
+    .card-body {
         border-bottom: gray solid 1px;
-   }
+    }
 
-   .row {
+    .row {
         margin: auto;
-   }
+    }
 
-   .create-button {
+    .create-button {
         background-color:#ffbf00;
         border-radius:6px;
         border:1px solid #ffbf00;
@@ -42,14 +42,14 @@
         text-decoration:none;
         text-shadow:0px 1px 0px #8c8235;
     }
-  
+
     .create-button:hover {
         background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
         background-color:#ffab23;
         color:#333333;
         text-decoration: none;
     }
-  
+
     .create-button:active {
         position:relative;
         top:1px;

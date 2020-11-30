@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NewsPageComponent } from './news-page/news-page.component';
 import { AddNewComponent } from './add-new/add-new.component';
+import { NewDetailsComponent } from './new-details/new-details.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
       path: 'news/create',
       pathMatch: 'full',
       component: AddNewComponent
+  },
+  {
+      path: 'news/details/:id',
+      pathMatch: 'full',
+      component: NewDetailsComponent
   }
 ];
 

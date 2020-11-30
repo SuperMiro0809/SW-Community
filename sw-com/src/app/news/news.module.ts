@@ -4,6 +4,8 @@ import { NewsPageComponent } from './news-page/news-page.component';
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsItemComponent } from './news-item/news-item.component';
 import { AddNewComponent } from './add-new/add-new.component';
+import { NewDetailsComponent } from './new-details/new-details.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,11 +13,13 @@ import { AddNewComponent } from './add-new/add-new.component';
   declarations: [
     NewsPageComponent,
     NewsItemComponent,
-    AddNewComponent
+    AddNewComponent,
+    NewDetailsComponent
   ],
   imports: [
     CommonModule,
-    NewsRoutingModule
+    NewsRoutingModule,
+    RouterModule
   ]
 })
 export class NewsModule { }

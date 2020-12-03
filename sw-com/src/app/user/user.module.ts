@@ -7,6 +7,8 @@ import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserService } from './user.service';
 import { CartComponent } from './cart/cart.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,9 @@ import { CartComponent } from './cart/cart.component';
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [
     UserService

@@ -1,14 +1,14 @@
-<div class="main-content" *ngIf="!loggedIn">
+<ng-template #notLoggedIn>
     <h1 class="main">
         fulfill <br> your destiny.
     </h1>
     <h3 class="main-text">Have you always wanted be a jedi or a sith? Join the light or the dark side now!</h3>
     <a routerLink="/users/login" class="join-button">Join Now</a>
-</div>
+</ng-template>
 
-<div class="main-content" *ngIf="loggedIn">
+<ng-template #LoggedIn>
     <h1 class="main">
-        Welcome, <span class="username">Username</span>
+        Welcome, <span class="username">{{user.username}}</span>
     </h1>
     <div class="news card">
         <div class="card-body">
@@ -65,4 +65,8 @@
             </div>
         </div>
     </div>
+</ng-template>
+
+<div class="main-content">
+    <ng-container *ngTemplateOutlet="user ? LoggedIn: notLoggedIn"></ng-container>
 </div>

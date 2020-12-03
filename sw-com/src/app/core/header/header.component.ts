@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../user/user.service';
+import { IUser } from 'src/app/shared/interfaceses';
 
 @Component({
   selector: 'app-header',
@@ -6,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  user: IUser;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getProfile().subscribe((data) => {
+      this.user = data;
+  });
   }
+
+  // get user() {
+  //   return this.userService.getProfile().subscribe((data) => {
+  //     return data;
+  //   });
+  // }
 
   openMenu(res: HTMLElement):void {
     
@@ -21,11 +33,6 @@ export class HeaderComponent implements OnInit {
         res.classList.add('hide');
         res.classList.remove('responsive');
     }
-    // if(topnav.className === 'topnav') {
-    //   topnav.className += " hide";
-    // }else {
-    //   topnav.className = "topnav";
-    // }
   }
 
 }

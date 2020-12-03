@@ -1,20 +1,20 @@
 <div class="register-content">
     <label class="register-title">Register</label>
-    <form class="register-form">
+    <form #f="ngForm" class="register-form" (ngSubmit)="submitFormHandler(f.value)">
         <div class="input-group mb-3">
-            <input type="email" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Username">
+            <input #userName="ngModel" name="username" type="text" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Username" ngModel>
         </div>
         <div class="input-group mb-3">
-            <input type="email" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address">
+            <input #userEmail="ngModel" name="email" type="email" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address" ngModel>
         </div>
         <div class="input-group mb-3">
-            <input type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Password">
+            <input #userPasswor="ngModel" name="password" type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Password" ngModel>
         </div>
         <div class="input-group mb-3">
-            <input type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Repeate Password">
+            <input #userRePassword="ngModel" name="rePassword" type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Repeate Password" ngModel>
         </div>
         <div class="mb-3">
-            <button class="register-btn">Register</button>
+            <button type="submit" class="register-btn">Register</button>
         </div>
     </form>
     <p class="form-info">Already have an account?

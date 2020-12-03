@@ -1,14 +1,27 @@
 <div class="login-content">
     <label class="login-title">Login</label>
-    <form class="login-form">
+    <form #f="ngForm" class="login-form" (ngSubmit)="submitFormHandler(f.value)">
         <div class="input-group mb-3">
-            <input type="email" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address">
+            <input #userEmail="ngModel" name="email" type="email" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address" required ngModel email>
         </div>
+
+        <p style="color: red;" *ngIf="userEmail.touched && userEmail.errors?.required">
+            Email is required
+        </p>
+        <p style="color: red;" *ngIf="userEmail.touched && userEmail.errors?.email">
+            Email is not valid
+        </p>
+
         <div class="input-group mb-3">
-            <input type="password" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Password">
+            <input #userPassword="ngModel" name="password" type="password" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Password" required ngModel>
         </div>
-        <div class="mb-3">
-            <button class="login-btn">Login</button>
+
+        <p style="color: red;" *ngIf="userPassword.touched && userPassword.errors?.required">
+            Password is required
+        </p>
+
+        <div class="mb-3 div-btn" >
+            <button [disabled]="f.invalid" type="submit" class="login-btn">Login</button>
         </div>
     </form>
     <p class="form-info">Don't have account?

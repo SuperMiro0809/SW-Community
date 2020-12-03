@@ -1,13 +1,13 @@
 <ng-template #notLoggedIn>
-    <a routerLink="/users/login" *ngIf="!user">Login</a>
-    <a routerLink="/users/register" *ngIf="!user">Register</a>
+    <a routerLink="/users/login">Login</a>
+    <a routerLink="/users/register">Register</a>
 </ng-template>
 <ng-template #LoggedIn>
-    <a routerLink="/users/profile" *ngIf="user">Welcome, {{user}}</a>
-    <a routerLink="/users/logout" *ngIf="user">Logout</a>
-    <a routerLink="/news" *ngIf="user">News</a>
-    <a routerLink="/shop" *ngIf="user">Shop</a>
-    <a routerLink="/users/cart" *ngIf="user">
+    <a routerLink="/users/profile">Welcome, {{user.username}} </a>
+    <a [routerLink]="" (click)='logoutHandler()'>Logout</a>
+    <a routerLink="/news">News</a>
+    <a routerLink="/shop">Shop</a>
+    <a routerLink="/users/cart">
         <i class="fas fa-shopping-cart"></i>
     </a>
 </ng-template>
@@ -16,14 +16,14 @@
     <i class="fab fa-jedi-order site-icon"></i>
     <a class="navbar-brand title" routerLink="/home">SW COM</a>
     <div class="topnav" #topnav>
-        <ng-container *ngTemplateOutlet="user ? LoggedIn : notLoggedIn"></ng-container>
+        <ng-container *ngTemplateOutlet="isLogged ? LoggedIn : notLoggedIn"></ng-container>
     </div>
         <a class="icon" (click)="openMenu(res)">
             <i class="fa fa-bars"></i>
         </a>
 </div>
 <div class="hide" #res>
-    <ng-container *ngTemplateOutlet="user ? LoggedIn : notLoggedIn"></ng-container>
+    <ng-container *ngTemplateOutlet="isLogged ? LoggedIn : notLoggedIn"></ng-container>
     <!-- <a routerLink="/users/profile" *ngIf="user">Welcome, username</a>
     <a routerLink="/users/logout" *ngIf="user">Logout</a>
     <a routerLink="/users/login" *ngIf="!user">Login</a>

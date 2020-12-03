@@ -1,5 +1,6 @@
 <div class="login-content">
     <label class="login-title">Login</label>
+    <div class="form-error" *ngIf="error">{{error}}</div>
     <form #f="ngForm" class="login-form" (ngSubmit)="submitFormHandler(f.value)">
         <div class="input-group mb-3">
             <input #userEmail="ngModel" name="email" type="email" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address" required ngModel email>

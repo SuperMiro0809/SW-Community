@@ -2,19 +2,52 @@
     <label class="register-title">Register</label>
     <form #f="ngForm" class="register-form" (ngSubmit)="submitFormHandler(f.value)">
         <div class="input-group mb-3">
-            <input #userName="ngModel" name="username" type="text" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Username" ngModel>
+            <input #userName="ngModel" name="username" type="text" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Username" required minlength="5" ngModel>
         </div>
+
+        <p style="color: red;" *ngIf="userName.touched && userName.errors?.required">
+            Username is required
+        </p>
+        <p style="color: red;" *ngIf="userName.touched && userName.errors?.minlength">
+            Username must be at least 5 characters long
+        </p>
+
         <div class="input-group mb-3">
-            <input #userEmail="ngModel" name="email" type="email" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address" ngModel>
+            <input #userEmail="ngModel" name="email" type="email" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address" required email ngModel>
         </div>
+
+        <p style="color: red;" *ngIf="userEmail.touched && userEmail.errors?.required">
+            Email is required
+        </p>
+        <p style="color: red;" *ngIf="userEmail.touched && userEmail.errors?.email">
+            Email is not valid
+        </p>
+
         <div class="input-group mb-3">
-            <input #userPasswor="ngModel" name="password" type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Password" ngModel>
+            <input #userPasswor="ngModel" name="password" type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Password" required minlength="6" ngModel>
         </div>
+
+        <p style="color: red;" *ngIf="userPasswor.touched && userPasswor.errors?.required">
+            Password is required
+        </p>
+        <p style="color: red;" *ngIf="userPasswor.touched && userPasswor.errors?.minlength">
+            Password must be at least 6 character long
+        </p>
+
         <div class="input-group mb-3">
-            <input #userRePassword="ngModel" name="rePassword" type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Repeate Password" ngModel>
+            <input #userRePassword="ngModel" name="rePassword" type="password" class="form-control register-input" aria-describedby="inputGroup-sizing-default" placeholder="Repeate Password" required ngModel>
         </div>
+
+        <p style="color: red;" *ngIf="userRePassword.touched && userRePassword.errors?.required">
+            Repeate password is required
+        </p>
+        <p style="color: red;" *ngIf="userRePassword.touched && userRePassword.value !== userPasswor.value">
+            Passwords don't match
+        </p>
+
+
         <div class="mb-3">
-            <button type="submit" class="register-btn">Register</button>
+            <button [disabled]="f.invalid" type="submit" class="register-btn">Register</button>
         </div>
     </form>
     <p class="form-info">Already have an account?

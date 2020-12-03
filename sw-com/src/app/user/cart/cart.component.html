@@ -1,40 +1,50 @@
+<ng-template #emptyCart>
+    <div class="empty-cart">Nothing Found!</div>
+</ng-template>
+
+<ng-template #fullCart>
+    <div class="row">
+        <div class="col-sm-6 col-lg-3 d-flex product">
+            <div class="card bg-gradient-primary product-content">
+                <div class="card-body card-body pb-0 justify-content-between align-items-start product-image">
+                    <img
+                        src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
+                    <i class="fas fa-times btn"></i>
+                </div>
+                <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                    <div class="title-div">Product: <span class="product-title">I am your father</span></div>
+                    <div class="by">Price: <span>20$</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 d-flex product">
+            <div class="card bg-gradient-primary product-content">
+                <div class="card-body card-body pb-0 justify-content-between align-items-start product-image">
+                    <img
+                        src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
+                    <i class="fas fa-times btn"></i>
+                </div>
+                <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                    <div class="title-div">Product: <span class="product-title">I am your father</span></div>
+                    <div class="by">Price: <span>20$</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
 <div class="main-content">
     <div class="shop card">
         <div class="card-body">
             <h4 class="shop-title">Part</h4>
         </div>
-        
+
         <div class="card-footer">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3 d-flex product">
-                        <div class="card bg-gradient-primary product-content">
-                            <div class="card-body card-body pb-0 justify-content-between align-items-start product-image">
-                                    <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
-                                    <i class="fas fa-times btn"></i>
-                            </div>
-                            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
-                                <div class="title-div">Product: <span class="product-title">I am your father</span></div>
-                                <div class="by">Price: <span>20$</span></div>
-                            </div>
-                        </div>    
-                    </div>
-                    <div class="col-sm-6 col-lg-3 d-flex product">
-                        <div class="card bg-gradient-primary product-content">
-                            <div class="card-body card-body pb-0 justify-content-between align-items-start product-image">
-                                    <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
-                                    <i class="fas fa-times btn"></i>
-                            </div>
-                            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
-                                <div class="title-div">Product: <span class="product-title">I am your father</span></div>
-                                <div class="by">Price: <span>20$</span></div>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
+                <ng-container *ngTemplateOutlet="user.cart.length ? fullCart : emptyCart"></ng-container>
             </div>
         </div>
     </div>
 </div>
-
-

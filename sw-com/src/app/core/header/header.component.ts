@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from '../../user/user.service';
 import { IUser } from 'src/app/shared/interfaceses';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,19 +11,32 @@ import { IUser } from 'src/app/shared/interfaceses';
 export class HeaderComponent implements OnInit {
   user: IUser;
 
-  constructor(private userService: UserService) { }
-
+  constructor(
+    private userService: UserService,
+    private router: Router
+    ) { 
+      this.userService.getProfile().subscribe((data) => {
+        this.user = data;
+      })
+     }
+ 
   ngOnInit(): void {
-    this.userService.getProfile().subscribe((data) => {
-      this.user = data;
-  });
   }
 
-  // get user() {
-  //   return this.userService.getProfile().subscribe((data) => {
-  //     return data;
-  //   });
-  // }
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
+
+  logoutHandler() {
+    this.userService.logout().subscribe( {
+      next: () => {
+        this.router.navigate(['/users/login']);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
 
   openMenu(res: HTMLElement):void {
     

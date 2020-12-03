@@ -2,7 +2,7 @@ const userModel = require('../models/user.js');
 const config = require('../config/config');
 const jwt = require('jsonwebtoken');
 
-const { jwtSecret, authCookieName } = config;
+const { jwtSecret, authCookieName, authHeaderName } = config;
 
 module.exports = {
 
@@ -66,7 +66,14 @@ module.exports = {
     },
 
     getLogout(req, res) {
+        const token = req.cookies[authCookieName] || req.headers[authHeaderName] || '';
+        if(!token) {
+            res.status(401);
+            return;
+        }
 
+        res.clearCookie(authCookieName);
+        res.status(200).send({ message: 'Logged out!' });
     }
 
 }

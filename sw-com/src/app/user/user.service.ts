@@ -11,18 +11,20 @@ import { IUser } from '../shared/interfaceses'
 export class UserService {
   currentUser: IUser | null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
 
+  }
+  get isLogged(): boolean { return !!this.currentUser; }
+  
   get loogedIn() {
-    this.getUserStatus();
-    return !!this.currentUser;
+    return { logeedIn: !!this.currentUser, user: this.currentUser };
   }
 
   getUserStatus(): Observable<any> {
     const url = `${environment.apiUrl}/users/profile`;
 
     return this.http.get<any>(url, { withCredentials: true }).pipe(
-      tap(((user) => this.currentUser = user)),
+      tap(((user: IUser) => this.currentUser = user)),
       catchError(() => { this.currentUser = null; return of(null); })
     )
   }
@@ -31,7 +33,7 @@ export class UserService {
     const url = `${environment.apiUrl}/users/register`;
 
     return this.http.post(url, data, { withCredentials: true }).pipe(
-      tap((user) => this.currentUser = user)
+      tap((user: IUser) => this.currentUser = user)
     );
   }
 
@@ -39,13 +41,21 @@ export class UserService {
     const url = `${environment.apiUrl}/users/login`;
 
     return this.http.post(url, data, { withCredentials: true }).pipe(
-      tap((user) => this.currentUser = user)
+      tap((user: IUser) => this.currentUser = user)
     );
   }
 
-  getProfile(): Observable<any> {
+  logout(): Observable<any> {
+    const url = `${environment.apiUrl}/users/logout`;
+
+    return this.http.get(url, { withCredentials: true }).pipe(
+      tap(() => this.currentUser = null)
+    )
+  }
+
+  getProfile(): Observable<IUser> {
     const url = `${environment.apiUrl}/users/profile`;
 
-    return this.http.get<any>(url, { withCredentials: true });
+    return this.http.get<IUser>(url, { withCredentials: true });
   }
 }

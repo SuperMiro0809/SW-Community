@@ -14,10 +14,6 @@ export class HomeComponent implements OnInit {
     private userService: UserService
   ) { }
 
-  get loggedStatus() {
-      return this.userService.loogedIn;
-  }
-
   ngOnInit(): void {
     this.userService.getProfile().subscribe(data => {
       this.user = data;

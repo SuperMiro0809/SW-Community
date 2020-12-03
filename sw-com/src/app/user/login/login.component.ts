@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  error: string
   constructor(
     private userService: UserService,
     private router: Router
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
       },
       error: (err) => {
-        console.error(err);
+        this.error = err.error.message;
       }
     });
   }

@@ -14,10 +14,8 @@ export class UserService {
   constructor(private http: HttpClient) {
 
   }
-  get isLogged(): boolean { return !!this.currentUser; }
-  
-  get loogedIn() {
-    return { logeedIn: !!this.currentUser, user: this.currentUser };
+  get isLogged(): boolean { 
+    return !!this.currentUser; 
   }
 
   getUserStatus(): Observable<any> {

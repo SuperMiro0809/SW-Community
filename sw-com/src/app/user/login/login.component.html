@@ -3,13 +3,13 @@
     <div class="form-error" *ngIf="error">{{error}}</div>
     <form #f="ngForm" class="login-form" (ngSubmit)="submitFormHandler(f.value)">
         <div class="input-group mb-3">
-            <input #userEmail="ngModel" name="email" type="email" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address" required ngModel email>
+            <input #userEmail="ngModel" name="email" type="email" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Email Address" required ngModel appEmailValidator>
         </div>
 
-        <p style="color: red;" *ngIf="userEmail.touched && userEmail.errors?.required">
+        <p class="error" *ngIf="userEmail.touched && userEmail.errors?.required">
             Email is required
         </p>
-        <p style="color: red;" *ngIf="userEmail.touched && userEmail.errors?.email">
+        <p class="error" *ngIf="userEmail.touched && userEmail.errors?.emailValidator">
             Email is not valid
         </p>
 
@@ -17,7 +17,7 @@
             <input #userPassword="ngModel" name="password" type="password" class="form-control login-input" aria-describedby="inputGroup-sizing-default" placeholder="Password" required ngModel>
         </div>
 
-        <p style="color: red;" *ngIf="userPassword.touched && userPassword.errors?.required">
+        <p class="error" *ngIf="userPassword.touched && userPassword.errors?.required">
             Password is required
         </p>
 

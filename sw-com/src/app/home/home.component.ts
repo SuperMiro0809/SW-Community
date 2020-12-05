@@ -8,16 +8,17 @@ import { IUser } from '../shared/interfaceses';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  user: IUser;
+  //user: IUser;
 
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getProfile().subscribe(data => {
-      this.user = data;
-    })
+  }
+
+  get user(): IUser {
+    return this.userService.currentUser;
   }
 
 }

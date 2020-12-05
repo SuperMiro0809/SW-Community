@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  error: String;
 
   constructor(
     private userService: UserService,
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        console.error(err);
+        this.error = err.error.message;
       }
     });
   }

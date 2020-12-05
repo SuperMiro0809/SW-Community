@@ -94,3 +94,7 @@ button[disabled]:hover{
     font-size: 18px;
     text-align: center;
 }
+
+.error {
+    color: red;
+}

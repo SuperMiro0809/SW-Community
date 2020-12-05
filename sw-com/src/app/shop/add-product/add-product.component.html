@@ -1,20 +1,51 @@
 <div class="create-content">
     <label class="create-title">New Product</label>
-    <form class="create-form">
+    <div class="form-error" *ngIf="error">{{error}}</div>
+    <form #f="ngForm" class="create-form" (ngSubmit)="submitFormHandler(f.value)">
+
         <div class="input-group mb-3">
-            <input type="text" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Product Name">
+            <input #productTitle="ngModel" type="text" name="productName" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Product Name" required minlength="3" ngModel>
         </div>
+
+        <p class="error" *ngIf="productTitle.touched && productTitle.errors?.required">
+            Product name is required
+        </p>
+        <p class="error" *ngIf="productTitle.touched && productTitle.errors?.minlength">
+            Product name must be at least 3 characters long
+        </p>
+
         <div class="input-group mb-3">
-            <input type="text" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Image Url">
+            <input #productImageUrl="ngModel" name="imageUrl" type="text" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Image Url" required ngModel appImageUrlValidator>
         </div>
+
+        <p class="error" *ngIf="productImageUrl.touched && productImageUrl.errors?.required">
+            Image Url is required
+        </p>
+        <p class="error" *ngIf="productImageUrl.touched && productImageUrl.errors?.imageUrlValidator">
+            Image Url is not valid
+        </p>
+
         <div class="input-group mb-3">
-            <textarea class="form-control create-input" placeholder="Product Description"></textarea>
+            <textarea #productDescription="ngModel" name="description" class="form-control create-input" placeholder="Product Description" required minlength="10" ngModel></textarea>
         </div>
+
+        <p class="error" *ngIf="productDescription.touched && productDescription.errors?.required">
+            Description is required
+        </p>
+        <p class="error" *ngIf="productDescription.touched && productDescription.errors?.minlength">
+            Description must be at least 10 characters long
+        </p>
+
         <div class="input-group mb-3">
-            <input type="text" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Price">
+            <input #productPrice="ngModel" type="text" name="price" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Price" required ngModel>
         </div>
+
+        <p class="error" *ngIf="productPrice.touched && productPrice.errors?.required">
+            Price is required
+        </p>
+
         <div class="mb-3">
-            <button class="create-btn">Add Product</button>
+            <button [disabled]="f.invalid" class="create-btn">Add Product</button>
         </div>
     </form>
 </div>

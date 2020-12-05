@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   submitFormHandler(data) {
-    console.log(data);
     this.userService.login(data).subscribe( {
       next: () => {
         this.router.navigate(['']);

@@ -9,6 +9,7 @@ const routes: Routes = [
         path: 'shop',
         pathMatch: 'full',
         component: ShopListComponent,
+        canActivate: [ AuthGuard ],
         data: {
           isLogged: true
         }
@@ -17,6 +18,7 @@ const routes: Routes = [
         path: 'shop/add',
         pathMatch: 'full',
         component: AddProductComponent,
+        canActivate: [ AuthGuard ],
         data: {
           isLogged: true
         }
@@ -25,6 +27,7 @@ const routes: Routes = [
         path: 'shop/details/:id',
         pathMatch: 'full',
         component: ProductDetailsComponent,
+        canActivate: [ AuthGuard ],
         data: {
           isLogged: true
         }

@@ -87,3 +87,14 @@ button[disabled]:hover{
   color: #666666;
   cursor: default;
 }
+
+.form-error {
+    color: red;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+}
+
+.error {
+    color: red;
+}

@@ -9,6 +9,7 @@ const routes: Routes = [
         path: 'news',
         pathMatch: 'full',
         component: NewsPageComponent,
+        canActivate: [ AuthGuard ],
         data: {
             isLogged: true
         }
@@ -17,6 +18,7 @@ const routes: Routes = [
         path: 'news/create',
         pathMatch: 'full',
         component: AddNewComponent,
+        canActivate: [ AuthGuard ],
         data: {
             isLogged: true
         }
@@ -25,6 +27,7 @@ const routes: Routes = [
         path: 'news/details/:id',
         pathMatch: 'full',
         component: NewDetailsComponent,
+        canActivate: [ AuthGuard ],
         data: {
             isLogged: true
         }

@@ -1,19 +1,19 @@
 <div class="main-content">
     <div class="product card">
         <div class="card-body">
-            <h4 class="product-title">I am your father</h4>
+            <h4 class="product-title">{{product.productName}}</h4>
         </div>
         
         <div class="card-footer">
             <div class="product-img">
-                <img src="../../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg" height="550">
+                <img src="{{product.imageUrl}}" height="550">
             </div>
             <div class="product-text">
                 <span class="price">Price:</span>
-                <div>20$</div>
+                <div>{{product.price}}$</div>
                 <span class="description">Description:</span>
-                <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolorem sequi odio, pariatur vitae aliquam dicta eaque quos ratione fugiat iure, explicabo et maiores non architecto quibusdam cupiditate quasi amet?</div>
-                <button class="buy-button">Buy</button>
+                <div>{{product.description}}</div>
+                <button class="buy-button" (click)="buyHandler(product._id)">Buy</button>
             </div>
         </div>
     </div>

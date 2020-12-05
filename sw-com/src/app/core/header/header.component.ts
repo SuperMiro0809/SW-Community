@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user/user.service';
 import { IUser } from 'src/app/shared/interfaceses';
 import { Router } from '@angular/router';
@@ -9,17 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  user: IUser;
-
+  
   constructor(
     private userService: UserService,
     private router: Router
-    ) { 
-      this.userService.getProfile().subscribe((data) => {
-        this.user = data;
-      })
-     }
- 
+  ) { }
+
   ngOnInit(): void {
   }
 
@@ -27,8 +22,12 @@ export class HeaderComponent implements OnInit {
     return this.userService.isLogged;
   }
 
+  get user(): IUser {
+    return this.userService.currentUser;
+  }
+
   logoutHandler() {
-    this.userService.logout().subscribe( {
+    this.userService.logout().subscribe({
       next: () => {
         this.router.navigate(['/users/login']);
       },
@@ -38,14 +37,14 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  openMenu(res: HTMLElement):void {
-    
-    if(res.classList.contains('hide')) {
-        res.classList.remove('hide');
-        res.classList.add('responsive');
-    }else {
-        res.classList.add('hide');
-        res.classList.remove('responsive');
+  openMenu(res: HTMLElement): void {
+
+    if (res.classList.contains('hide')) {
+      res.classList.remove('hide');
+      res.classList.add('responsive');
+    } else {
+      res.classList.add('hide');
+      res.classList.remove('responsive');
     }
   }
 

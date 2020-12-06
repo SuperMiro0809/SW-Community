@@ -1,51 +1,16 @@
 <div class="row">
 
-<div class="col-sm-6 col-lg-3 d-flex new">
-    <div class="card bg-gradient-primary new-content">
-        <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
-                <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
-        </div>
-        <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
-            <div class="title-div">Title: <a routerLink="/news/details/1" class="new-title">I am your father</a></div>
-            <div class="by">By: <span>Username</span></div>
-        </div>
-    </div>
-</div>
-
-<div class="col-sm-6 col-lg-3 d-flex new">
-    <div class="card bg-gradient-primary new-content">
-        <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
-                <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
-        </div>
-        <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
-            <div class="title-div">Title: <a routerLink="/news/details/1" class="new-title">I am your father</a></div>
-            <div class="by">By: <span>Username</span></div>
+    <div class="col-sm-6 col-lg-3 d-flex new" *ngFor="let post of news">
+        <div class="card bg-gradient-primary new-content">
+            <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
+                <img src="{{post.imageUrl}}" style="object-fit: cover;" height="300" width="600">
+            </div>
+            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                <div class="title-div">Title: <a routerLink="/news/details/{{post._id}}" class="new-title">{{post.title | shortenText}}</a>
+                </div>
+                <div class="by">By: <span>{{post.creatorId.username}}</span></div>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="col-sm-6 col-lg-3 d-flex new">
-    <div class="card bg-gradient-primary new-content">
-        <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
-                <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
-        </div>
-        <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
-            <div class="title-div">Title: <a routerLink="/news/details/1" class="new-title">I am your father</a></div>
-            <div class="by">By: <span>Username</span></div>
-        </div>
-    </div>
-</div>
-
-<div class="col-sm-6 col-lg-3 d-flex new">
-    <div class="card bg-gradient-primary new-content">
-        <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
-                <img src="../../assets/065c31c680d938dd607e42f8f1f8b58c81-15-star-wars-best-moments-2.rsquare.w700.jpg">
-        </div>
-        <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
-            <div class="title-div">Title: <a routerLink="/news/details/1" class="new-title">I am your father</a></div>
-            <div class="by">By: <span>Username</span></div>
-        </div>
-    </div>
-</div>
 
 </div>

@@ -1,4 +1,5 @@
 const userModel = require('../models/user.js');
+const productModel = require('../models/product');
 const config = require('../config/config');
 const jwt = require('jsonwebtoken');
 
@@ -67,13 +68,38 @@ module.exports = {
 
     getLogout(req, res) {
         const token = req.cookies[authCookieName] || req.headers[authHeaderName] || '';
-        if(!token) {
+        if (!token) {
             res.status(401);
             return;
         }
 
         res.clearCookie(authCookieName);
         res.status(200).send({ message: 'Logged out!' });
+    },
+
+    getCart(req, res, next) {
+        const { _id } = req.user;
+
+        userModel.findOne({ _id }).populate('cart')
+            .then((user) => {
+                res.status(200).send(user);
+            })
+            .catch(next)
+    },
+
+    removeFromCart(req, res, next) {
+        const { _id } = req.user;
+        const productId = req.params.id;
+
+        productModel.findById(productId)
+        .then((product) => {
+            userModel.update({ _id }, { $pull: { cart: productId } })
+            .then(() => {
+                res.status(200).send({ message: 'Product removed from cart!' });
+            })
+            .catch(next);
+        })
+        .catch(next)
     }
 
 }

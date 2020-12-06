@@ -18,6 +18,6 @@ export function imageUrlValidator(control: AbstractControl) : ValidationErrors |
         return null;
     }
 
-    const isValidImageUrl = /^https?:\/\/.*\.(?:png|jpg)$/.test(value);
+    const isValidImageUrl = /^https?:\/\/.*\.(?:png|jpg|jpeg)$/.test(value);
     return isValidImageUrl ? null : { imageUrlValidator: true };
 }

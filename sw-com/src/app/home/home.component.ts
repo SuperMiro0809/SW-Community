@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
-import { IUser } from '../shared/interfaceses';
+import { IUser, INew } from '../shared/interfaceses';
+import { NewsService } from '../news/news.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,17 @@ import { IUser } from '../shared/interfaceses';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  //user: IUser;
+  news: INew | INew[];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private newsService: NewsService
   ) { }
 
   ngOnInit(): void {
+    this.newsService.getAllNews(4).subscribe((data) => {
+      this.news = data;
+    })
   }
 
   get user(): IUser {

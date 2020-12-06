@@ -11,5 +11,8 @@ router.get('/logout', userController.getLogout);
 
 router.get('/profile', auth, userController.getProfile);
 
+router.get('/profile/cart', auth, userController.getCart);
+
+router.get('/profile/cart/:id', auth, userController.removeFromCart);
 
 module.exports = router;

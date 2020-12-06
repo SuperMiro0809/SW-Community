@@ -9,7 +9,7 @@ router.get('/products/:id', auth, shopController.getProductById);
 
 router.post('/create', auth, shopController.createProduct);
 
-router.get('/buy', auth, shopController.buyProducts);
+router.get('/buy/:id', auth, shopController.buyProduct);
 
 
 module.exports = router;

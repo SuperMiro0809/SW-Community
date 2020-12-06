@@ -72,6 +72,26 @@
         text-decoration: none;
     }
 
+    .bought {
+        color: greenyellow;
+        font-size:16px;
+        margin: 30px auto;
+        padding:9px 15px;
+        top:50%; 
+        left:30%; 
+        position: relative;
+    }
+
+    .msg {
+        color: greenyellow;
+        font-size:16px;
+        margin: 30px auto;
+        padding:9px 15px;
+        top:50%; 
+        left:30%; 
+        position: relative;
+      }
+
     @media only screen and (max-width: 990px) {
         .product-text {
             float: left;

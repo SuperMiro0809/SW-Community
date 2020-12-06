@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MfComponent } from './mf/mf.component';
 import { EmailValidatorDirective } from './email-validator.directive';
 import { ImageUrlValidatorDirective } from './image-url-validator.directive';
+import { ShortenTextPipe } from './shorten-text.pipe';
 
 
 
@@ -10,7 +11,8 @@ import { ImageUrlValidatorDirective } from './image-url-validator.directive';
   declarations: [
     MfComponent,
     EmailValidatorDirective,
-    ImageUrlValidatorDirective
+    ImageUrlValidatorDirective,
+    ShortenTextPipe
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { ImageUrlValidatorDirective } from './image-url-validator.directive';
   exports: [
     MfComponent,
     EmailValidatorDirective,
-    ImageUrlValidatorDirective
+    ImageUrlValidatorDirective,
+    ShortenTextPipe
   ]
 })
 export class SharedModule { }

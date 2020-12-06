@@ -9,14 +9,32 @@ import { IUser } from 'src/app/shared/interfaceses';
 })
 export class CartComponent implements OnInit {
   user: IUser;
+  message: string;
 
   constructor(
     private userService: UserService
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
-    this.userService.getProfile().subscribe((data) => {
+    this.userData();
+  }
+
+  userData() {
+    this.userService.getCart().subscribe((data) => {
       this.user = data;
+    })
+  }
+
+  deleteHandler(id) {
+    this.userService.removeFromCart(id).subscribe({
+      next: (data) => {
+        this.message = (data as any).message;
+        this.userData();
+      },
+      error: (err) => {
+        console.log(err);
+      }
     })
   }
 

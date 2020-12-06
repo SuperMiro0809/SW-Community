@@ -1,4 +1,5 @@
 const productModel = require('../models/product');
+const userModel = require('../models/user');
 const config = require('../config/config');
 
 module.exports = {
@@ -43,7 +44,22 @@ module.exports = {
         .catch(next)
     },
 
-    buyProducts(req, res, next) {
+    buyProduct(req, res, next) {
+        const userId = req.user._id;
+        const productId = req.params.id;
 
+        userModel.findById(userId)
+        .then((user) => {
+            if(user.cart.includes(productId)) {
+               next();
+               return;
+            }
+            userModel.update({ _id: userId }, { $push: { cart: productId } })
+            .then(() => {
+                res.status(200).send({ message: 'You added this product to your cart!' });
+            })
+            .catch(next);
+        })
+        .catch(next)
     }
 }

@@ -71,3 +71,30 @@
         text-decoration: none;
         color: white;
     }
+
+    button:disabled,
+    button[disabled]{
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+        cursor: default;
+    }
+
+    button:disabled:hover,
+    button[disabled]:hover{
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+        cursor: default;
+    }
+
+    .form-error {
+        color: red;
+        font-weight: 500;
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .error {
+        color: red;
+    }

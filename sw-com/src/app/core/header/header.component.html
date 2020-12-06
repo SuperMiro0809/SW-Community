@@ -4,12 +4,12 @@
 </ng-template>
 <ng-template #LoggedIn>
     <a routerLink="/users/profile">Welcome, {{user.username}} </a>
-    <a [routerLink]="" (click)='logoutHandler()'>Logout</a>
-    <a routerLink="/news">News</a>
-    <a routerLink="/shop">Shop</a>
     <a routerLink="/users/cart">
         <i class="fas fa-shopping-cart"></i>
     </a>
+    <a routerLink="/news">News</a>
+    <a routerLink="/shop">Shop</a>
+    <a [routerLink]="" (click)='logoutHandler()'>Logout</a>
 </ng-template>
 
 <div class="n" id="n">

@@ -56,4 +56,16 @@ export class UserService {
 
     return this.http.get<IUser>(url, { withCredentials: true });
   }
+
+  getCart(): Observable<any> {
+    const url = `${environment.apiUrl}/users/profile/cart`;
+
+    return this.http.get(url, { withCredentials: true });
+  }
+
+  removeFromCart(id) {
+    const url = `${environment.apiUrl}/users/profile/cart/${id}`;
+
+    return this.http.get(url, { withCredentials: true });
+  }
 }

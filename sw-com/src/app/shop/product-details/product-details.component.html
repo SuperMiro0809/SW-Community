@@ -1,9 +1,16 @@
+<ng-template #canBuy>
+    <button class="buy-button" (click)="buyHandler(product._id)">Buy</button>
+</ng-template>
+<ng-template #bought>
+    <span class="bought">Already bought this!</span>
+</ng-template>
+
 <div class="main-content">
     <div class="product card">
         <div class="card-body">
             <h4 class="product-title">{{product.productName}}</h4>
+            <span class="msg" *ngIf="message">{{message}}</span>
         </div>
-        
         <div class="card-footer">
             <div class="product-img">
                 <img src="{{product.imageUrl}}" height="550">
@@ -13,7 +20,7 @@
                 <div>{{product.price}}$</div>
                 <span class="description">Description:</span>
                 <div>{{product.description}}</div>
-                <button class="buy-button" (click)="buyHandler(product._id)">Buy</button>
+                <ng-container *ngTemplateOutlet="profile.cart.includes(product._id) ? bought : canBuy"></ng-container>
             </div>
         </div>
     </div>

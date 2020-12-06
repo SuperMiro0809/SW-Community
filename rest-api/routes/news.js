@@ -7,6 +7,6 @@ router.get('/posts', newsController.getAllNews);
 
 router.get('/posts/:id', auth, newsController.getNewById);
 
-router.get('/create', auth, newsController.createNew);
+router.post('/create', auth, newsController.createNew);
 
 module.exports = router;

@@ -17,10 +17,7 @@ const newSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    creatorId: {
-        type: String,
-        required: true
-    }
+    creatorId: { type: mongoose.Types.ObjectId, ref: 'user' }
 })
 
 module.exports = mongoose.model('new', newSchema);

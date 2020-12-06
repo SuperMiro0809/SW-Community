@@ -29,9 +29,15 @@ export class ShopService {
     return this.http.post<IProduct>(url, data, { withCredentials: true });
   }
 
-  buyProducts(): Observable<IProduct | IProduct[]> {
-    const url = `${environment.apiUrl}/shop/buy`;
+  buyProduct(id): Observable<any> {
+    const url = `${environment.apiUrl}/shop/buy/${id}`;
 
-    return this.http.get<IProduct | IProduct[]>(url, { withCredentials: true });
+    return this.http.get<any>(url, { withCredentials: true });
   }
+
+  // buyProducts(): Observable<IProduct | IProduct[]> {
+  //   const url = `${environment.apiUrl}/shop/buy`;
+
+  //   return this.http.get<IProduct | IProduct[]>(url, { withCredentials: true });
+  // }
 }

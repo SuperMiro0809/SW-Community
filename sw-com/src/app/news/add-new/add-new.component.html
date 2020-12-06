@@ -1,17 +1,42 @@
 <div class="create-content">
     <label class="create-title">New Post</label>
-    <form class="create-form">
+    <div class="form-error" *ngIf="error">{{error}}</div>
+    <form #f="ngForm" class="create-form" (ngSubmit)="submitFormHandler(f.value)">
         <div class="input-group mb-3">
-            <input type="text" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Title">
+            <input #newTitle="ngModel" type="text" name="title" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Title" required minlength="5" ngModel>
         </div>
+
+        <p class="error" *ngIf="newTitle.touched && newTitle.errors?.required">
+            New title is required
+        </p>
+        <p class="error" *ngIf="newTitle.touched && newTitle.errors?.minlength">
+            New title must be at least 5 characters long
+        </p>
+
         <div class="input-group mb-3">
-            <input type="text" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Image Url">
+            <input #newImageUrl="ngModel" type="text" name="imageUrl" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Image Url" required appImageUrlValidator ngModel>
         </div>
+
+        <p class="error" *ngIf="newImageUrl.touched && newImageUrl.errors?.required">
+            New image url is required
+        </p>
+        <p class="error" *ngIf="newImageUrl.touched && newImageUrl.errors?.imageUrlValidator">
+            New image url is not valid
+        </p>
+
         <div class="input-group mb-3">
-            <textarea class="form-control create-input" placeholder="Post"></textarea>
+            <textarea #newPost="ngModel" name="post" class="form-control create-input" placeholder="Post" required minlength="10" ngModel></textarea>
         </div>
+
+        <p class="error" *ngIf="newPost.touched && newPost.errors?.required">
+            New post is required
+        </p>
+        <p class="error" *ngIf="newPost.touched && newPost.errors?.minlength">
+            New post must be at least 10 characters long
+        </p>
+
         <div class="mb-3">
-            <button class="create-btn">Create</button>
+            <button [disabled]="f.invalid" class="create-btn">Create</button>
         </div>
     </form>
 </div>

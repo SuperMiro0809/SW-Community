@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from '../news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-new',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-new.component.css']
 })
 export class AddNewComponent implements OnInit {
+  error: String;
 
-  constructor() { }
+  constructor(
+    private newsService: NewsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  submitFormHandler(data): void {
+    this.newsService.createNew(data).subscribe({
+      next: () => {
+        this.router.navigate(['/news'])
+      },
+      error: (err) => {
+        this.error = err.error.message;
+      }
+    })
   }
 
 }

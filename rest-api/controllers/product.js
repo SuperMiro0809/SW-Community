@@ -1,5 +1,6 @@
 const productModel = require('../models/product');
 const userModel = require('../models/user');
+const { validationResult } = require('express-validator');
 const config = require('../config/config');
 
 module.exports = {
@@ -13,6 +14,12 @@ module.exports = {
 
     createProduct(req, res, next) {
         const { productName, imageUrl, description, price} = req.body;
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            next();
+            return;
+        }
 
         productModel.create({ productName, imageUrl, description, price, creatorId: req.user._id })
         .then((product) => {

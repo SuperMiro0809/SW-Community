@@ -1,5 +1,6 @@
 const userModel = require('../models/user.js');
 const productModel = require('../models/product');
+const { validationResult } = require('express-validator');
 const config = require('../config/config');
 const jwt = require('jsonwebtoken');
 
@@ -9,6 +10,12 @@ module.exports = {
 
     postRegister(req, res, next) {
         const { username, email, password, rePassword } = req.body;
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            next();
+            return;
+        }
 
         return userModel.create({ username, email, password, rePassword })
             .then((user) => {
@@ -35,6 +42,12 @@ module.exports = {
 
     postLogin(req, res, next) {
         const { email, password } = req.body;
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            next();
+            return;
+        }
 
         userModel.findOne({ email })
             .then(user => {

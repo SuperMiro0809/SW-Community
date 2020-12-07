@@ -21,3 +21,14 @@ export function imageUrlValidator(control: AbstractControl) : ValidationErrors |
     const isValidImageUrl = /^https?:\/\/.*\.(?:png|jpg|jpeg)$/.test(value);
     return isValidImageUrl ? null : { imageUrlValidator: true };
 }
+
+export function positiveNumberValidator(control: AbstractControl) : ValidationErrors | null {
+    const value = (control.value as string);
+
+    if(!value) {
+        return null;
+    }
+
+    const isValidNumber = /^\d+(,\d{3})*(\.\d{1,2})*(?:\$)$/gm.test(value);
+    return isValidNumber ? null : { numberValidator: true };
+}

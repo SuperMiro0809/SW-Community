@@ -4,7 +4,7 @@ import { MfComponent } from './mf/mf.component';
 import { EmailValidatorDirective } from './email-validator.directive';
 import { ImageUrlValidatorDirective } from './image-url-validator.directive';
 import { ShortenTextPipe } from './shorten-text.pipe';
-
+import { NumberValidatorDirective } from './number-validator.directive';
 
 
 @NgModule({
@@ -12,7 +12,8 @@ import { ShortenTextPipe } from './shorten-text.pipe';
     MfComponent,
     EmailValidatorDirective,
     ImageUrlValidatorDirective,
-    ShortenTextPipe
+    ShortenTextPipe,
+    NumberValidatorDirective
   ],
   imports: [
     CommonModule
@@ -21,7 +22,8 @@ import { ShortenTextPipe } from './shorten-text.pipe';
     MfComponent,
     EmailValidatorDirective,
     ImageUrlValidatorDirective,
-    ShortenTextPipe
+    ShortenTextPipe,
+    NumberValidatorDirective
   ]
 })
 export class SharedModule { }

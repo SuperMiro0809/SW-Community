@@ -37,11 +37,14 @@
         </p>
 
         <div class="input-group mb-3">
-            <input #productPrice="ngModel" type="text" name="price" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Price" required ngModel>
+            <input #productPrice="ngModel" type="text" name="price" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Price" required appNumberValidator ngModel>
         </div>
 
         <p class="error" *ngIf="productPrice.touched && productPrice.errors?.required">
             Price is required
+        </p>
+        <p class="error" *ngIf="productPrice.touched && productPrice.errors?.numberValidator">
+            Price is not valid
         </p>
 
         <div class="mb-3">

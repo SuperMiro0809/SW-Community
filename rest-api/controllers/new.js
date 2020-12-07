@@ -1,4 +1,5 @@
 const newModel = require('../models/new');
+const { validationResult } = require('express-validator');
 const config = require('../config/config');
 
 module.exports = {
@@ -24,6 +25,12 @@ module.exports = {
 
     createNew(req, res, next) {
         const { title, imageUrl, post } = req.body;
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            next();
+            return;
+        }
 
         newModel.create({ title, imageUrl, post, creatorId: req.user._id })
         .then((news) => {

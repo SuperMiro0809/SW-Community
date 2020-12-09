@@ -7,7 +7,7 @@ import { INew } from '../../shared/interfaceses';
   styleUrls: ['./news-item.component.css']
 })
 export class NewsItemComponent implements OnInit {
-  @Input() news: INew | INew[];
+  @Input() news: INew[];
 
   constructor() { }
 

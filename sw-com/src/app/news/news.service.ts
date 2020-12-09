@@ -13,10 +13,10 @@ export class NewsService {
     private http: HttpClient
   ) { }
 
-  getAllNews(limit): Observable<INew | INew[]> {
+  getAllNews(limit): Observable<INew[]> {
     const url = `${environment.apiUrl}/news/posts?limit=${limit}`;
 
-    return this.http.get<INew | INew[]>(url, { withCredentials: true });
+    return this.http.get<INew[]>(url, { withCredentials: true });
   }
 
   getNewById(id): Observable<INew> {

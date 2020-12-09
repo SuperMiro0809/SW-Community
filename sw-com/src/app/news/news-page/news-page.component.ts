@@ -8,7 +8,7 @@ import { INew } from 'src/app/shared/interfaceses';
   styleUrls: ['./news-page.component.css']
 })
 export class NewsPageComponent implements OnInit {
-  news: INew | INew[];
+  news: INew[];
 
   constructor(
     private newsService: NewsService

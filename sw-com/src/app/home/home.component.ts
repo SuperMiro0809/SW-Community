@@ -9,7 +9,7 @@ import { NewsService } from '../news/news.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  news: INew | INew[];
+  news: INew[];
 
   constructor(
     private userService: UserService,

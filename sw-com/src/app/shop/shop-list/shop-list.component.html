@@ -1,3 +1,10 @@
+<ng-template #noItems>
+    <div class="empty">No products found!</div>
+</ng-template>
+<ng-template #items>
+    <app-shop-item [products]="products"></app-shop-item>
+</ng-template>
+
 <div class="main-content">
     <div class="shop card">
         <div class="card-body">
@@ -11,7 +18,7 @@
         
         <div class="card-footer">
             <div class="container-fluid">
-                <app-shop-item [products]="products"></app-shop-item>
+                <ng-container *ngTemplateOutlet="products.length ? items : noItems"></ng-container>
             </div>
         </div>
     </div>

@@ -1,33 +1,33 @@
-.main-content {
-   margin-top: 15%;
-   margin-bottom: 3%;
-}
-
-.main {
-    font-size: 80px;
-    color: white;
-    text-transform: uppercase;
-}
-
-.main-text {
-    color: #ffbf00;
-}
-
-.join-button {
-  margin-top: 10px;
-  background-color:#ffbf00;
-  border-radius:6px;
-  border:1px solid #ffbf00;
-  display:inline-block;
-  cursor:pointer;
-  color:#333333;
-  font-family:Verdana;
-  font-size:15px;
-  font-weight:bold;
-  padding:9px 24px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #8c8235;
+  .main-content {
+    margin-top: 15%;
+    margin-bottom: 3%;
   }
+
+  .main {
+      font-size: 80px;
+      color: white;
+      text-transform: uppercase;
+  }
+
+  .main-text {
+      color: #ffbf00;
+  }
+
+  .join-button {
+    margin-top: 10px;
+    background-color:#ffbf00;
+    border-radius:6px;
+    border:1px solid #ffbf00;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-family:Verdana;
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #8c8235;
+    }
 
   .join-button:hover {
       background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
@@ -76,7 +76,7 @@
     display: block !important;   
     padding: 0px !important;
     border-bottom: 1px solid #ffbf00 !important;   
-}  
+  }  
 
   .new-title {
     color: #ffbf00;
@@ -106,5 +106,12 @@
     left: 0;
     padding-left: 15px;
     font-weight: 500;
+  }
+
+  .empty {
+    color: #ffbf00;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
   }
 

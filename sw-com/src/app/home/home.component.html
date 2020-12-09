@@ -6,6 +6,28 @@
     <a routerLink="/users/login" class="join-button">Join Now</a>
 </ng-template>
 
+<ng-template #noNews>
+    <div class="empty">No news yet!</div>
+</ng-template>
+
+<ng-template #allNews>
+    <div class="row">
+        <div class="col-sm-6 col-lg-3 d-flex new" *ngFor="let post of news">
+            <div class="card bg-gradient-primary new-content">
+                <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
+                    <img src="{{post.imageUrl}}" style="object-fit: cover;" height="300" width="600">
+                </div>
+                <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
+                    <div class="title-div">Title: <a routerLink="/news/details/{{post._id}}"
+                            class="new-title">{{post.title | shortenText}}</a>
+                    </div>
+                    <div class="by">By: <span>{{post.creatorId.username}}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
 <ng-template #LoggedIn>
     <h1 class="main">
         Welcome, <span class="username">{{user.username}}</span>
@@ -16,25 +38,12 @@
         </div>
         <div class="card-footer">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3 d-flex new" *ngFor="let post of news">
-                        <div class="card bg-gradient-primary new-content">
-                            <div class="card-body card-body pb-0 justify-content-between align-items-start new-image">
-                                <img src="{{post.imageUrl}}" style="object-fit: cover;" height="300" width="600">
-                            </div>
-                            <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
-                                <div class="title-div">Title: <a routerLink="/news/details/{{post._id}}"
-                                        class="new-title">{{post.title | shortenText}}</a>
-                                </div>
-                                <div class="by">By: <span>{{post.creatorId.username}}</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <ng-container *ngTemplateOutlet="news.length ? allNews : noNews"></ng-container>
             </div>
         </div>
     </div>
 </ng-template>
+
 
 <div class="main-content">
     <ng-container *ngTemplateOutlet="user ? LoggedIn: notLoggedIn"></ng-container>

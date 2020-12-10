@@ -9,6 +9,8 @@ import { IUser } from 'src/app/shared/interfaceses';
 })
 export class ProfileComponent implements OnInit {
   user: IUser;
+  inEditMode = false;
+  message: string;
 
   constructor(
     private userService: UserService
@@ -17,6 +19,21 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getProfile().subscribe((data) => {
       this.user = data;
+    })
+  }
+
+  changePasswordHandler() {
+    this.inEditMode = !this.inEditMode;
+  }
+
+  submitFormHandler(data) {
+    this.userService.changePassword(data).subscribe({
+      next: (res) => {
+        this.message = (res as any).message;
+      },
+      error: (err) => {
+        console.error(err);
+      }
     })
   }
 

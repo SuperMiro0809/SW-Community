@@ -1,17 +1,47 @@
+<ng-template #profile>
+    <div class="profile-group">
+        <span><i class="fas fa-user-astronaut icon"></i></span>
+        <span class="profile-info">Username</span>
+        <span class="profile-value">{{user.username}}</span>
+    </div>
+    <div class="profile-group">
+        <i class="fa fa-envelope-o icon"></i>
+        <span class="profile-info">Email</span>
+        <span class="profile-value">{{user.email}}</span>
+    </div>
+</ng-template>
+
+<ng-template #editMode>
+    <form #f="ngForm" class="edit-form" (ngSubmit)="submitFormHandler(f.value)">
+        <div class="input-group mb-3">
+            <input #userPassword="ngModel" name="password" type="password" class="form-control edit-input" aria-describedby="inputGroup-sizing-default" placeholder="Password" required minlength="6" ngModel>
+        </div>
+
+        <p class="error" *ngIf="userPassword.touched && userPassword.errors?.required">
+            Password is required
+        </p>
+        <p class="error" *ngIf="userPassword.touched && userPassword.errors?.minlength">
+            Password must be at least 6 character long
+        </p>
+
+        <div class="mb-3 div-btn" >
+            <button [disabled]="f.invalid" type="submit" class="edit-btn">Change</button>
+        </div>
+    </form>
+</ng-template>
+
+
 <div class="profile card">
     <div class="card-body">
         <h4 class="profile-title">Profile Info</h4>
+        <div class="text-right mgt-10 justify-content-between">  
+            <div>
+                <button class="change-button" (click)="changePasswordHandler()">Change Password</button>
+            </div>
+        </div>
+        <span class="msg" *ngIf="message">{{message}}</span>
     </div>
     <div class="card-footer">
-        <div class="profile-group">
-            <span><i class="fas fa-user-astronaut icon"></i></span>
-            <span class="profile-info">Username</span>
-            <span class="profile-value">{{user.username}}</span>
-        </div>
-        <div class="profile-group">
-            <i class="fa fa-envelope-o icon"></i>
-            <span class="profile-info">Email</span>
-            <span class="profile-value">{{user.email}}</span>
-        </div>
+        <ng-container *ngTemplateOutlet="inEditMode ? editMode : profile"></ng-container>
     </div>
 </div>

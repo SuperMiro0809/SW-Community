@@ -19,4 +19,8 @@ router.get('/profile/cart/:id', auth, userController.removeFromCart);
 
 router.put('/cart/checkout', auth, userController.checkout);
 
+router.put('/profile/password', auth, userController.changePassword);
+
+router.put('/forgotpassword', userController.forgotPassword);
+
 module.exports = router;

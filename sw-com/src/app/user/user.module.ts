@@ -9,6 +9,7 @@ import { UserService } from './user.service';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -16,7 +17,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     LoginComponent, 
     RegisterComponent, 
-    ProfileComponent, CartComponent
+    ProfileComponent, CartComponent, ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

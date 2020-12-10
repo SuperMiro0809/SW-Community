@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,13 @@ const routes: Routes = [
             data: {
               isLogged: true
             }
+        },
+        {
+          path: 'forgotpassword',
+          component: ForgotPasswordComponent,
+          data: {
+            isLogged: false
+          }
         },
         {
           path: 'cart',

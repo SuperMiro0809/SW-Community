@@ -74,4 +74,16 @@ export class UserService {
 
     return this.http.put(url, ids, { withCredentials: true });
   }
+
+  changePassword(data) {
+    const url = `${environment.apiUrl}/users/profile/password`;
+
+    return this.http.put(url, data, { withCredentials: true });
+  }
+
+  forgotPassword(data) {
+    const url = `${environment.apiUrl}/users/forgotpassword`;
+
+    return this.http.put(url, data, { withCredentials: true });
+  }
 }

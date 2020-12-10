@@ -3,8 +3,9 @@ const productModel = require('../models/product');
 const { validationResult } = require('express-validator');
 const config = require('../config/config');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-const { jwtSecret, authCookieName, authHeaderName } = config;
+const { jwtSecret, authCookieName, authHeaderName, saltRounds } = config;
 
 module.exports = {
 
@@ -56,7 +57,7 @@ module.exports = {
             .then(([user, match]) => {
                 if (!match) {
                     res.status(401)
-                        .send({ message: 'Wrong username or password' });
+                        .send({ message: 'Wrong email or password' });
                     return
                 }
 
@@ -140,6 +141,41 @@ module.exports = {
             .catch(next)
         })
         res.status(200).send({ message: 'Checkout successful!' })
+    },
+
+    changePassword(req, res, next) {
+        let { password } = req.body;
+        const { _id } = req.user;
+
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+            bcrypt.hash(password, salt, (err, hash) => {
+                userModel.update({ _id }, { password: hash })
+                .then(() => {
+                    res.status(200).send({ message: 'Password updated' });
+                })
+                .catch(next)
+            })
+        })
+    },
+
+    forgotPassword(req, res, next) {
+        let { email, password } = req.body;
+
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+            bcrypt.hash(password, salt, (err, hash) => {
+                userModel.findOne({ email })
+                .then((user) => {
+                    userModel.update({ _id: user._id }, { password: hash })
+                    .then(() => {
+                        res.status(200).send({ message: 'Password changed' });
+                    })
+                    .catch(next)
+                })
+                .catch(err => {
+                    res.status(401).send({ message: 'Wrong email' });
+                });
+            })
+        })
     }
 
 }

@@ -107,15 +107,39 @@ module.exports = {
         productModel.findById(productId)
         .then((product) => {
 
-            Promise.all([
-                userModel.update({ _id }, { $pull: { cart: productId } }),
-                productModel.update({ _id: productId }, { quantity: product.quantity + 1 })
-            ]).then(() => {
+            userModel.update({ _id }, { $pull: { cart: productId } })
+            .then(() => {
                 res.status(200).send({ message: 'Product removed from cart!' });
             })
             .catch(next);
+
         })
         .catch(next)
+    },
+
+    checkout(req, res, next) {
+        const { _id } = req.user;
+        let ids = req.body.ids;
+        ids.forEach(i => {
+
+            productModel.findById(i)
+            .then((product) => {
+                if(product.quantity === 1) {
+                    Promise.all([
+                        productModel.findByIdAndDelete(i),
+                        userModel.update({ _id }, { $pull: { cart: i } })
+                    ]).catch(next)
+
+                }else {
+                    Promise.all([
+                        productModel.update({ _id: i }, { quantity: product.quantity - 1 }),
+                        userModel.update({ _id }, { $pull: { cart: i } })
+                    ]).catch(next)
+                }
+            })
+            .catch(next)
+        })
+        res.status(200).send({ message: 'Checkout successful!' })
     }
 
 }

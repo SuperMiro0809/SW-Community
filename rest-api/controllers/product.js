@@ -64,14 +64,13 @@ module.exports = {
                     next();
                     return;
                  }
-                
-                 Promise.all([
-                    userModel.update({ _id: userId }, { $push: { cart: productId } }),
-                    productModel.findByIdAndUpdate({ _id: productId }, { quantity: product.quantity - 1 }, { "new": true})
-                 ]).then(([uUser, uProduct]) => {
-                    res.status(200).send({ message: 'You added this product to your cart!', product: uProduct });
+
+                 userModel.update({ _id: userId }, { $push: { cart: productId } })
+                 .then(() => {
+                    res.status(200).send({ message: 'You added this product to your cart!', product: product });
                  })
                  .catch(next);
+                
             })
             .catch(next);
         })

@@ -26,6 +26,11 @@
     <div class="shop card">
         <div class="card-body">
             <h4 class="shop-title">Cart</h4>
+            <div class="text-right mgt-10 justify-content-between">  
+                <div>
+                    <button class="checkout-button" (click)="checkoutHandler(user.cart)">Checkout</button>
+                </div>
+            </div>
             <span class="msg" *ngIf="message">{{message}}</span>
         </div>
 

@@ -68,4 +68,10 @@ export class UserService {
 
     return this.http.get(url, { withCredentials: true });
   }
+
+  checkout(ids) {
+    const url = `${environment.apiUrl}/users/cart/checkout`;
+
+    return this.http.put(url, ids, { withCredentials: true });
+  }
 }

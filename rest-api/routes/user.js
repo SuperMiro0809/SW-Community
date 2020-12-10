@@ -17,4 +17,6 @@ router.get('/profile/cart', auth, userController.getCart);
 
 router.get('/profile/cart/:id', auth, userController.removeFromCart);
 
+router.put('/cart/checkout', auth, userController.checkout);
+
 module.exports = router;

@@ -26,6 +26,20 @@ export class CartComponent implements OnInit {
     })
   }
 
+  checkoutHandler(data) {
+    let ids = data.map(i => i._id);
+    
+    this.userService.checkout({ ids }).subscribe({
+      next: (data) => {
+        this.userData();
+        this.message = (data as any).message;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
   deleteHandler(id) {
     this.userService.removeFromCart(id).subscribe({
       next: (data) => {

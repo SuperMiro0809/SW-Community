@@ -44,7 +44,7 @@ module.exports = {
     getProductById(req, res, next) {
         const id = req.params.id;
 
-        productModel.findById(id)
+        productModel.findById(id).populate('creatorId')
         .then((product) => {
             res.status(200).send(product);
         })
@@ -57,13 +57,19 @@ module.exports = {
 
         userModel.findById(userId)
         .then((user) => {
-            if(user.cart.includes(productId)) {
-               next();
-               return;
-            }
-            userModel.update({ _id: userId }, { $push: { cart: productId } })
-            .then(() => {
-                res.status(200).send({ message: 'You added this product to your cart!' });
+
+            productModel.findById(productId).populate('creatorId')
+            .then((product) => {
+                if(user.cart.includes(productId) || product.creatorId._id === userId) {
+                    next();
+                    return;
+                 }
+
+                 userModel.update({ _id: userId }, { $push: { cart: productId } })
+                 .then(() => {
+                     res.status(200).send({ message: 'You added this product to your cart!' });
+                 })
+                 .catch(next);
             })
             .catch(next);
         })

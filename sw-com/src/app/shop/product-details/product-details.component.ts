@@ -45,6 +45,7 @@ export class ProductDetailsComponent implements OnInit {
       next: (data) => {
         this.userData();
         this.message = data.message;
+        this.product = data.product;
       },
       error: (err) => {
         this.router.navigate(['/shop']);

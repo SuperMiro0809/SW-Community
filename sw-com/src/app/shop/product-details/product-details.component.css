@@ -46,6 +46,11 @@
         font-weight: 500;
     }
 
+    .quantity {
+        color: #ffbf00;
+        font-weight: 500;
+    }
+
     .buy-button {
         background-color:#ffbf00;
         border-radius:6px;

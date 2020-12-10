@@ -13,7 +13,7 @@ module.exports = {
     },
 
     createProduct(req, res, next) {
-        const { productName, imageUrl, description, currency, price} = req.body;
+        const { productName, imageUrl, description, quantity, currency, price} = req.body;
 
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
@@ -21,7 +21,7 @@ module.exports = {
             return;
         }
 
-        productModel.create({ productName, imageUrl, description, currency, price, creatorId: req.user._id })
+        productModel.create({ productName, imageUrl, description, quantity, currency, price, creatorId: req.user._id })
         .then((product) => {
             res.status(201).send(product);
         })
@@ -60,14 +60,16 @@ module.exports = {
 
             productModel.findById(productId).populate('creatorId')
             .then((product) => {
-                if(user.cart.includes(productId) || product.creatorId._id === userId) {
+                if(user.cart.includes(productId) || product.creatorId._id === userId || product.quantity === 0) {
                     next();
                     return;
                  }
-
-                 userModel.update({ _id: userId }, { $push: { cart: productId } })
-                 .then(() => {
-                     res.status(200).send({ message: 'You added this product to your cart!' });
+                
+                 Promise.all([
+                    userModel.update({ _id: userId }, { $push: { cart: productId } }),
+                    productModel.findByIdAndUpdate({ _id: productId }, { quantity: product.quantity - 1 }, { "new": true})
+                 ]).then(([uUser, uProduct]) => {
+                    res.status(200).send({ message: 'You added this product to your cart!', product: uProduct });
                  })
                  .catch(next);
             })

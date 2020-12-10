@@ -1,5 +1,5 @@
 <ng-template #canBuy>
-    <button class="buy-button" (click)="buyHandler(product._id)" *ngIf="product.creatorId._id !== profile._id">Buy</button>
+    <button class="buy-button" (click)="buyHandler(product._id)" *ngIf="(product.creatorId._id !== profile._id) && (product.quantity > 0)">Buy</button>
 </ng-template>
 <ng-template #bought>
     <span class="bought">Already bought this!</span>
@@ -20,6 +20,8 @@
                 <div>{{product.price}}{{product.currency}}</div>
                 <span class="description">Description:</span>
                 <div>{{product.description}}</div>
+                <span class="quantity">Quantity</span>
+                <div>{{product.quantity}}</div>
                 <ng-container *ngTemplateOutlet="profile.cart.includes(product._id) ? bought : canBuy"></ng-container>
             </div>
         </div>

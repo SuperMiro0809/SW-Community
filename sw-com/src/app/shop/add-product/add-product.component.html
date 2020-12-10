@@ -37,6 +37,14 @@
         </p>
 
         <div class="input-group mb-3">
+            <input type="number" #productQuantity="ngModel" name="quantity" class="form-control create-input" placeholder="Quantity" value="1" min="1" required ngModel/>
+        </div>
+
+        <p class="error" *ngIf="productQuantity.touched && productQuantity.errors?.required">
+            Quantity is required
+        </p>
+
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <select class="custom-select currency" #dp name="currency" ngModel="$">
                     <option value="$" selected>$</option>

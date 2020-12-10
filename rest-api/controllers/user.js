@@ -106,8 +106,11 @@ module.exports = {
 
         productModel.findById(productId)
         .then((product) => {
-            userModel.update({ _id }, { $pull: { cart: productId } })
-            .then(() => {
+
+            Promise.all([
+                userModel.update({ _id }, { $pull: { cart: productId } }),
+                productModel.update({ _id: productId }, { quantity: product.quantity + 1 })
+            ]).then(() => {
                 res.status(200).send({ message: 'Product removed from cart!' });
             })
             .catch(next);

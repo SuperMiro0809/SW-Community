@@ -98,3 +98,9 @@
     .error {
         color: red;
     }
+
+    .currency {
+        border-radius: 0%;
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+    }

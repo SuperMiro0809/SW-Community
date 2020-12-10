@@ -28,7 +28,7 @@ module.exports = [
     }),
     body('price', 'Price is not valid')
     .custom((value) => {
-        const regex = /^\d+(,\d{3})*(\.\d{1,2})*(?:\$)$/;
+        const regex = /^\d+(,\d{3})*(\.\d{1,2})*(?:)$/;
         if(!value.match(regex)) {
             throw new Error('Price is not valid')
         }

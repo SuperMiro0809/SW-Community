@@ -37,7 +37,14 @@
         </p>
 
         <div class="input-group mb-3">
-            <input #productPrice="ngModel" type="text" name="price" class="form-control create-input" aria-describedby="inputGroup-sizing-default" placeholder="Price" required appNumberValidator ngModel>
+            <div class="input-group-prepend">
+                <select class="custom-select currency" #dp name="currency" ngModel="$">
+                    <option value="$" selected>$</option>
+                    <option value="lv.">lv.</option>
+                    <option value="EUR" >EUR</option>
+                </select>
+            </div>
+            <input #productPrice="ngModel" type="text" name="price" class="form-control" aria-describedby="inputGroup-sizing-default" placeholder="Price" required appNumberValidator ngModel>
         </div>
 
         <p class="error" *ngIf="productPrice.touched && productPrice.errors?.required">

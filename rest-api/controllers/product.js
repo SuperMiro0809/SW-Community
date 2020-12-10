@@ -13,7 +13,7 @@ module.exports = {
     },
 
     createProduct(req, res, next) {
-        const { productName, imageUrl, description, price} = req.body;
+        const { productName, imageUrl, description, currency, price} = req.body;
 
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
@@ -21,7 +21,7 @@ module.exports = {
             return;
         }
 
-        productModel.create({ productName, imageUrl, description, price, creatorId: req.user._id })
+        productModel.create({ productName, imageUrl, description, currency, price, creatorId: req.user._id })
         .then((product) => {
             res.status(201).send(product);
         })

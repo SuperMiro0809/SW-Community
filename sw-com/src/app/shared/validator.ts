@@ -29,6 +29,6 @@ export function positiveNumberValidator(control: AbstractControl) : ValidationEr
         return null;
     }
 
-    const isValidNumber = /^\d+(,\d{3})*(\.\d{1,2})*(?:\$)$/gm.test(value);
+    const isValidNumber = /^\d+(,\d{3})*(\.\d{1,2})*(?:)$/gm.test(value);
     return isValidNumber ? null : { numberValidator: true };
 }

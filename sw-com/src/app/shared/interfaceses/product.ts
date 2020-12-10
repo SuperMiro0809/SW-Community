@@ -5,6 +5,7 @@ export interface IProduct extends IBase {
     productName: String,
     imageUrl: String,
     description: String,
+    currency: String,
     price: Number,
     creatorId: IUser
 }

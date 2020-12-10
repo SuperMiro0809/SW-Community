@@ -9,7 +9,7 @@
             <div class="c-chart-wrapper mt-3 mx-3" style="height:100px; margin-top: 2rem !important;">
                 <div class="title-div">Title: <a routerLink="/shop/details/{{product._id}}" class="product-title">{{product.productName | shortenText}}</a>
                 </div>
-                <div class="by">Price: <span>{{product.price}}</span></div>
+                <div class="by">Price: <span>{{product.price}}{{product.currency}}</span></div>
             </div>
         </div>
     </div>

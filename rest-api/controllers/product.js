@@ -60,7 +60,7 @@ module.exports = {
 
             productModel.findById(productId).populate('creatorId')
             .then((product) => {
-                if(user.cart.includes(productId) || product.creatorId._id === userId || product.quantity === 0) {
+                if(user.cart.includes(productId) || product.creatorId._id.toString() === userId || product.quantity === 0) {
                     next();
                     return;
                  }
@@ -73,6 +73,28 @@ module.exports = {
                 
             })
             .catch(next);
+        })
+        .catch(next)
+    },
+
+    deleteById(req, res, next) {
+        const userId = req.user._id;
+        const productId = req.params.id;
+
+        productModel.findById(productId)
+        .then((product) => {
+            if(product.creatorId.toString() !== userId) {
+                next();
+                return;
+            }
+
+            productModel.findByIdAndDelete(productId, function(err) {
+                if(err) {
+                    next(err);
+                    return;
+                }
+                res.status(200).send({ message: 'Product deleted successfully' });
+            })
         })
         .catch(next)
     }

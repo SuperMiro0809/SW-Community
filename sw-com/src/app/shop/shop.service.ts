@@ -35,6 +35,12 @@ export class ShopService {
     return this.http.get<any>(url, { withCredentials: true });
   }
 
+  deleteProduct(id) {
+    const url = `${environment.apiUrl}/shop/products/${id}`;
+
+    return this.http.delete<any>(url, { withCredentials: true });
+  }
+
   // buyProducts(): Observable<IProduct | IProduct[]> {
   //   const url = `${environment.apiUrl}/shop/buy`;
 

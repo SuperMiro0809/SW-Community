@@ -8,9 +8,12 @@ router.get('/products', auth, shopController.getAllProducts);
 
 router.get('/products/:id', auth, shopController.getProductById);
 
+router.delete('/products/:id', auth, shopController.deleteById);
+
 router.post('/create', auth, shopValidator, shopController.createProduct);
 
 router.get('/buy/:id', auth, shopController.buyProduct);
+
 
 
 module.exports = router;

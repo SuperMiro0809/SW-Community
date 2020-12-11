@@ -3,6 +3,8 @@ import { ShopService } from '../shop.service';
 import { IProduct, IUser } from 'src/app/shared/interfaceses';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-details',
@@ -53,8 +55,18 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
-  // get user() {
-  //   return this.userService.currentUser;
-  // }
+  deleteHandler(id) {
+    this.shopService.deleteProduct(id).subscribe({
+      next: (data) => {
+        this.message = data.message;
+        of(this.message).pipe(delay(2000)).subscribe(x => {
+          this.router.navigate(['/shop'])
+        })      
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
 
 }

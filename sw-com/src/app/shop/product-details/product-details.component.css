@@ -77,6 +77,32 @@
         text-decoration: none;
     }
 
+    .delete-button {
+        background-color:red;
+        border-radius:6px;
+        border:1px solid red;
+        display:inline-block;
+        cursor:pointer;
+        color:#333333;
+        font-family:Verdana;
+        font-size:15px;
+        font-weight:bold;
+        margin: 30px auto;
+        padding:9px 15px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #8c8235;
+        top:50%; 
+        left:40%;   
+        position: relative;
+    }
+
+    .delete-button:hover {
+        background:linear-gradient(to bottom, red 5%, #ffec64 100%);
+        background-color:#ffab23;
+        color:#333333;
+        text-decoration: none;
+    }
+
     .bought {
         color: greenyellow;
         font-size:16px;

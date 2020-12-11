@@ -16,7 +16,7 @@ module.exports = {
     getNewById(req, res, next) {
         const id = req.params.id;
 
-        newModel.findById(id)
+        newModel.findById(id).populate('creatorId')
         .then((post) => {
             res.status(200).send(post);
         })
@@ -48,5 +48,27 @@ module.exports = {
             }
             next(err);
         })
+    },
+
+    deleteNew(req, res, next) {
+        const userId = req.user._id;
+        const newId = req.params.id;
+
+        newModel.findById(newId)
+        .then((post) => {
+            if(post.creatorId.toString() !== userId) {
+                next();
+                return;
+            }
+
+            newModel.findByIdAndDelete(newId, function(err) {
+                if(err) {
+                    next(err);
+                    return;
+                }
+                res.status(200).send({ message: 'Post deleted successfully' });
+            })
+        })
+        .catch(next)
     }
 }

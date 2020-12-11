@@ -172,7 +172,7 @@ module.exports = {
                     .catch(next)
                 })
                 .catch(err => {
-                    res.status(401).send({ message: 'Wrong email' });
+                    res.status(401).send({ message: 'Email is not registered' });
                 });
             })
         })

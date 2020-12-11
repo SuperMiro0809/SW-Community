@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { IUser } from 'src/app/shared/interfaceses';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +16,8 @@ export class ProfileComponent implements OnInit {
   message: string;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,10 +30,24 @@ export class ProfileComponent implements OnInit {
     this.inEditMode = !this.inEditMode;
   }
 
+  logoutHandler() {
+    this.userService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/users/login']);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
   submitFormHandler(data) {
     this.userService.changePassword(data).subscribe({
       next: (res) => {
         this.message = (res as any).message;
+        of(this.message).pipe(delay(1000)).subscribe(x => {
+          this.logoutHandler();
+        })
       },
       error: (err) => {
         console.error(err);

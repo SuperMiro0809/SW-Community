@@ -59,7 +59,7 @@ export class ProductDetailsComponent implements OnInit {
     this.shopService.deleteProduct(id).subscribe({
       next: (data) => {
         this.message = data.message;
-        of(this.message).pipe(delay(2000)).subscribe(x => {
+        of(this.message).pipe(delay(1000)).subscribe(x => {
           this.router.navigate(['/shop'])
         })      
       },

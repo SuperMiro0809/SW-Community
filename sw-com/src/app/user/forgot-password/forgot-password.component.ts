@@ -24,7 +24,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.userService.forgotPassword(data).subscribe({
       next: (res) => {
         this.message = (res as any).message;
-        of(this.message).pipe(delay(2000)).subscribe(x => {
+        of(this.message).pipe(delay(1000)).subscribe(x => {
           this.router.navigate(['/users/login'])
         })
       },

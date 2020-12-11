@@ -30,4 +30,11 @@ export class NewsService {
 
     return this.http.post<INew>(url, data, { withCredentials: true });
   }
+
+  deleteNewById(id): Observable<any> {
+    const url = `${environment.apiUrl}/news/posts/${id}`;
+
+    return this.http.delete<any>(url, { withCredentials: true });
+  }
+
 }

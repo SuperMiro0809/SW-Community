@@ -5,7 +5,7 @@ const config = {
     authHeaderName: "auth",
     jwtSecret: "secret",
     saltRounds: 10,
-    origin: ['http://localhost:5555', 'http://localhost:4201'],
+    origin: ['http://localhost:5555', 'http://localhost:4200'],
 }
 
 module.exports = config;

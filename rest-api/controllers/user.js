@@ -121,6 +121,10 @@ module.exports = {
     checkout(req, res, next) {
         const { _id } = req.user;
         let ids = req.body.ids;
+        if(ids.leangth === 0) {
+            next();
+            return;
+        }
         ids.forEach(i => {
 
             productModel.findById(i)

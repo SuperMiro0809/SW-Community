@@ -150,6 +150,23 @@
       top:1px;
   }
 
+  button:disabled,
+  button[disabled]{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: default;
+  }
+
+  button:disabled:hover,
+  button[disabled]:hover{
+    border: 1px solid #999999;
+    background: #cccccc;
+    background-color: #cccccc !important;
+    color: #666666 !important;
+    cursor: default;
+  }
+
   @media only screen and (max-width: 575.5px) {
 
     .btn {
